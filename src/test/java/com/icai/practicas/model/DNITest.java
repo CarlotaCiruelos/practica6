@@ -10,7 +10,7 @@ class DNITest {
     private DNI dni;
 
     @Test
-    void returnTrueWhenDniIsValid() {
+    void return_true_when_dni_is_valid() {
         //given
         dni = new DNI( "53813913P");
         Boolean expectedResult = true;
@@ -24,7 +24,7 @@ class DNITest {
     }
 
     @Test
-    void returnFalseWhenDniIsNotValidBinarySearch() {
+    void return_false_when_dni_is_not_valid_binary_search() {
         //given
         dni = new DNI( "00000000T");
         Boolean expectedResult = false;
@@ -38,7 +38,7 @@ class DNITest {
     }
 
     @Test
-    void returnFalseWhenDniIsNotValidMatcher() {
+    void return_false_when_dni_is_not_valid_matcher() {
         //given
         dni = new DNI( "A3813913P");
         Boolean expectedResult = false;
@@ -52,7 +52,7 @@ class DNITest {
     }
 
     @Test
-    void returnFalseWhenDniIsNotValidDigitoControl() {
+    void return_false_when_dni_is_not_valid_digito_control() {
         //given
         dni = new DNI( "5381391L");
         Boolean expectedResult = false;
