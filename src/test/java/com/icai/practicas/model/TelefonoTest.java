@@ -12,7 +12,7 @@ class TelefonoTest {
     private Telefono telefono;
 
     @Test
-    void returnTrueWhenTelefonoPatternIsValid() {
+    void return_true_when_telefono_pattern_is_valid() {
         //given
         telefono = new Telefono("913526429");
         Boolean expectedResult = true;
@@ -24,7 +24,7 @@ class TelefonoTest {
 
     }
     @Test
-    void returnFalseWhenTelefonoPatternIsNotValid() {
+    void return_false_when_telefono_pattern_is_not_valid() {
         //given
         telefono = new Telefono("913a26429");
         Boolean expectedResult = false;
