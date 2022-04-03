@@ -112,6 +112,49 @@ class ProcessControllerTest {
     }
 
 
+    @Test
+    public void return_message1_when_entry_is_valid(){
+
+        //Given
+        String address = "http://localhost:" + port + "/api/v1/process-step1-legacy";
+        MultiValueMap<String, String> data = new LinkedMultiValueMap<>();
+        data.add("fullName", "Carlota Ciruelos");
+        data.add("dni", "53813913P");
+        data.add("telefono", "616381627");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(data, headers);
+
+        //When
+        ResponseEntity<String> result = this.restTemplate.postForEntity(address, request, String.class);
+
+        //Then
+        String expectedResult = "Muchas gracias por enviar los datos";
+        then(result.getBody()).contains(expectedResult);
+    }
+
+    @Test
+    public void return_message2_when_entry_dni_is_not_valid(){
+
+        //Given
+        String address = "http://localhost:" + port + "/api/v1/process-step1-legacy";
+        MultiValueMap<String, String> data = new LinkedMultiValueMap<>();
+        data.add("fullName", "Carlota Ciruelos");
+        data.add("dni", "5381391P");
+        data.add("telefono", "616381627");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(data, headers);
+
+        //When
+        ResponseEntity<String> result = this.restTemplate.postForEntity(address, request, String.class);
+
+        //Then
+        String expectedResult = "Revise los datos introducidos";
+        then(result.getBody()).contains(expectedResult);
+    }
+
+
 
 
 
